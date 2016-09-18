@@ -27,6 +27,13 @@ To achieve this goal, the collection must be:
  1. **Cloud Repository/Backup**: Dropbox Camera Upload
  2. **Staging**: iPhoto 9.6.4 (plus some scripts found in this repository)
  3. **Archiving**: Dropbox  (premim account with 1TB storage)
+ 
+## The process outline
+1. **Cloud Repository/Backup**
+* Let Dropbox upload the pictures from the iPhone to `Camera Uploads`
+* Manually grab the LivePhotos' videos and put them in `Camera Uploads`
+2. **Staging**
+3. **Archiving**
 
 ## The process in detail
  1. **Cloud Repository/Backup**
