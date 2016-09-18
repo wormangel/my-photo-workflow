@@ -28,6 +28,21 @@ To achieve this goal, the collection must be:
  2. **Staging**: iPhoto 9.6.4 (plus some scripts found in this repository)
  3. **Archiving**: Dropbox  (premim account with 1TB storage)
 
+## The process in detail
+ 1. **Cloud Repository/Backup**
+ 
+ * Dropbox puts the pictures inside a `Camera Uploads` folder, no subdirectories
+ * Instead of the regular `IMG_xyz.jpg` naming system used by iPhone, the images get stored with a timestamp format: `yyyy-mm-dd hh.mm.ss`. **I think** this comes from the EXIF of the image and falls back to the upload date if needed. Dropbox takes care of appending some extras to the filename to identify different versions of the picture:
+  * The regular picture: `yyyy-mm-dd hh.mm.ss.jpg`
+  * The Instagram version: `yyyy-mm-dd hh.mm.ss-1.jpg`
+  * The HDR version: `yyyy-mm-dd hh.mm.ss HDR.jpg`
+  * Movies: `yyyy-mm-dd hh.mm.ss.mov`
+  * Screenshots: `yyyy-mm-dd hh.mm.ss.png`
+ * Dropbox still lacks support for iPhone's LivePhotos, so a manual process is needed:
+  * Connect the iPhone to the Macbook and launch `Image Capture`
+  * The LivePhotos are actually a pair of an image and a video file, saved with the same `IMG_xyz` name in the iPhone, only differing by extension (jpg/mov). So the idea is to visually identify the LivePhotos by scrolling the list (sorted by filenmae), paying attention to the repeated entries, selecting all the video ones (they are usually around 3 MB, keeping that in mind helps doing this process more efficiently) and importing them to some folder. I use `~/_TMP/livephotos`. Since I don't delete pictures from the iPhone very often, I keep track of where I stopped last time by leaving the last two files in that folder always, so when I do a new import I only look for LivePhotos taken after that point.
+  * The image files will also be imported, so the folder will have both JPG and MOV files, with the default `IMG_xyz` names. We can't simply drop them in the Dropbox folder otherwise we will have duplicate pictures (remember Dropbox already imported the image file for the LivePhotos). We could simply copy the MOV files but they would be in the wrong filename format. In order to fix that, I use this software called `DupeGuru` to find duplicates between two folders. Launch it, choose the `Camera Uploads` folder and the LivePhotos staging folder and fire it: it should match exactly half of the files in the LivePhotos folder (the pictures, not the videos). Now to rename them, DupeGuru offers this nice feature of exporting a CSV with information about the duplicates found. I serve that to a Ruby script of mine that takes care of renaming both the images and videos files in the LivePhotos staging folder to the proper names found in the Dropbox folder. Then we can move the videos to `Camera Upload` and delete the images (remember to leave the last ones so you can start from where you left off the next time you need to do that).
+
 ### TODO
 
 - Detail the workflow
