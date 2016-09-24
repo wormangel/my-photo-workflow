@@ -30,8 +30,10 @@ To achieve this goal, the collection must be:
  
 ## The process outline
 1. **Cloud Repository/Backup**
+
 * Let Dropbox upload the pictures from the iPhone to `Camera Uploads`
-* Manually grab the LivePhotos' videos and put them in `Camera Uploads`
+* Manually grab the LivePhotos' videos, fix the naming and put them in `Camera Uploads`
+
 2. **Staging**
 3. **Archiving**
 
