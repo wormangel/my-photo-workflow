@@ -27,9 +27,9 @@ To achieve this goal, the collection must be:
 ### **1. Cloud Repository/Backup**
  
 #### Choice of software
-**Current:** Dropbox Camera Upload
+*Current:* Dropbox Camera Upload
 
-**Previously:** iCloud Photostream. Moved away from that because of Apple pushing the replacement of iPhoto with Photos. Also the storage limitation and the the inability to sync videos as well.
+*Previously:* iCloud Photostream. Moved away from that because of Apple pushing the replacement of iPhoto with Photos. Also the storage limitation and the the inability to sync videos as well.
 
 #### tl;dr
 * Let Dropbox upload the pictures from the iPhone to `Camera Uploads`
@@ -51,14 +51,13 @@ To achieve this goal, the collection must be:
 
 ### **2. Staging**: 
 #### Choice of software
-**Current:** iPhoto 9.6.4 (plus some scripts found in this repository)
+*Current:* iPhoto 9.6.4 (plus some scripts found in this repository)
 
-**Previously:** 
-* **Photos:** Tried switching from iPhoto to the new Photos app, but they way it enforces you to use Moments instead of Events killed it for me.
+*Previously:* Photos app. Tried switching from iPhoto to the new Photos app, but they way it enforces you to use Moments instead of Events killed it for me.
 
 ### **3. Archiving**:
 #### Choice of software
-Dropbox  (premim account with 1TB storage)
+*Current:* Dropbox  (premim account with 1TB storage)
  
 # TODO
 
