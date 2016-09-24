@@ -55,6 +55,22 @@ To achieve this goal, the collection must be:
 
 *Previously:* Photos app. Tried switching from iPhoto to the new Photos app, but they way it enforces you to use Moments instead of Events killed it for me.
 
+#### tl;dr
+* Import photos from Camera Uploads to iPhoto
+* Create an event containing the photos for a given date
+* Import any extra photos (e.g. from GoPro or other sources) into this event
+* If needed, correct the dates using iPhoto's batch change tool
+* Export the pictures to the final location in Dropbox
+* Export the videos "manually" (explained below)
+* Run the exifDateFix script on the folder
+
+#### Details
+ * I have a staging library setup in iPhoto just for that. I keep it clean only with the pictures I'm working on at the moment.
+ * The first step is to open that library and drag some files from the Camera Uploads folder to drop in iPhoto. I usually select by date.
+ * After importing, iPhoto creates a single event with what was imported. I choose it and select `Autosplit selected events` so it creates separate events for each date.
+ * TODO ..
+ 
+
 ### **3. Archiving**:
 #### Choice of software
 *Current:* Dropbox  (premim account with 1TB storage)
