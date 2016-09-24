@@ -18,28 +18,23 @@ To achieve this goal, the collection must be:
 - Scans of old photos
 - Photos and videos found around old hard drives, the internet, etc
 
-## The core process
+## The process outline
 1. **Cloud Repository/Backup**: Photos are uploaded automatically to some cloud storage so the phone is not the single point of failure anymore.
 2. **Staging**: Some app is used to import the photos and split then into events. At this point any needed fix is done (specially timestamp ones).
 3. **Archiving**: The event is saved to a definitive location in the cloud storage (and whatever other backup mechanism)
 
-## Choice of software
- 1. **Cloud Repository/Backup**: Dropbox Camera Upload
- 2. **Staging**: iPhoto 9.6.4 (plus some scripts found in this repository)
- 3. **Archiving**: Dropbox  (premim account with 1TB storage)
+## In depth
+### **Cloud Repository/Backup**
  
-## The process outline
-1. **Cloud Repository/Backup**
+#### Choice of software
+Dropbox Camera Upload
 
+#### tl;dr
 * Let Dropbox upload the pictures from the iPhone to `Camera Uploads`
 * Manually grab the LivePhotos' videos, fix the naming and put them in `Camera Uploads`
 
-2. **Staging**
-3. **Archiving**
+#### Details
 
-## The process in detail
- 1. **Cloud Repository/Backup**
- 
  * Dropbox puts the pictures inside a `Camera Uploads` folder, no subdirectories
  * Instead of the regular `IMG_xyz.jpg` naming system used by iPhone, the images get stored with a timestamp format: `yyyy-mm-dd hh.mm.ss`. **I think** this comes from the EXIF of the image and falls back to the upload date if needed. Dropbox takes care of appending some extras to the filename to identify different versions of the picture:
   * The regular picture: `yyyy-mm-dd hh.mm.ss.jpg`
@@ -52,7 +47,15 @@ To achieve this goal, the collection must be:
   * The LivePhotos are actually a pair of an image and a video file, saved with the same `IMG_xyz` name in the iPhone, only differing by extension (jpg/mov). So the idea is to visually identify the LivePhotos by scrolling the list (sorted by filenmae), paying attention to the repeated entries, selecting all the video ones (they are usually around 3 MB, keeping that in mind helps doing this process more efficiently) and importing them to some folder. I use `~/_TMP/livephotos`. Since I don't delete pictures from the iPhone very often, I keep track of where I stopped last time by leaving the last two files in that folder always, so when I do a new import I only look for LivePhotos taken after that point.
   * The image files will also be imported, so the folder will have both JPG and MOV files, with the default `IMG_xyz` names. We can't simply drop them in the Dropbox folder otherwise we will have duplicate pictures (remember Dropbox already imported the image file for the LivePhotos). We could simply copy the MOV files but they would be in the wrong filename format. In order to fix that, I use this software called `DupeGuru` to find duplicates between two folders. Launch it, choose the `Camera Uploads` folder and the LivePhotos staging folder and fire it: it should match exactly half of the files in the LivePhotos folder (the pictures, not the videos). Now to rename them, DupeGuru offers this nice feature of exporting a CSV with information about the duplicates found. I serve that to a Ruby script of mine that takes care of renaming both the images and videos files in the LivePhotos staging folder to the proper names found in the Dropbox folder. Then we can move the videos to `Camera Upload` and delete the images (remember to leave the last ones so you can start from where you left off the next time you need to do that).
 
-### TODO
+### **Staging**: 
+#### Choice of software
+iPhoto 9.6.4 (plus some scripts found in this repository)
+
+### **Archiving**:
+#### Choice of software
+Dropbox  (premim account with 1TB storage)
+ 
+# TODO
 
 - Detail the workflow
 - Upload the ruby scripts
